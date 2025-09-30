@@ -22,8 +22,7 @@ class CarModel(models.Model):
         ('SEDAN', 'sedan'),
         ('SUV', 'SUV'),
         ('WAGON', 'Wagon'),
-        ('ATV', 'ATV'),
-        ('AWD', 'AWD'),
+       
     ]
     model_type = models.CharField(max_length=10, choices=CAR_TYPES, default='SUV')
     model_year = models.IntegerField(default=2023,
@@ -32,14 +31,7 @@ class CarModel(models.Model):
             MinValueValidator(2015)
         ])
     
-    CONDITIONS = [
-        ('REGULAR', 'Regular'),
-        ('BAD', 'Bad'),
-        ('DESTROYED', 'Destroyed'),
-        ('MINT', 'Mint'),
-        ('PRISTINE', 'Pristine'),
-    ]
-    model_condition = models.CharField(max_length=10, choices=CONDITIONS, default='Regular')
+
     
     def __str__(self):
         return self.model_name
