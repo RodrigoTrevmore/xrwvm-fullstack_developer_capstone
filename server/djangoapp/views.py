@@ -69,7 +69,8 @@ def registration(request):
     try:
         User.objects.get(username=username)
         username_exist = True
-    except:
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
         logger.debug("{} is new user".format(username))
 
     if not username_exist:
@@ -126,9 +127,10 @@ def add_review(request):
     if request.user.is_authenticated:
         data = json.loads(request.body)
         try:
-            # response = post_review(data)
+            post_review(data)
             return JsonResponse({"status": 200})
-        except:
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
             return JsonResponse({"status": 401,
                                  "message": "Error in posting review"})
     else:
