@@ -5,13 +5,16 @@ import "../assets/style.css";
 import Header from '../Header/Header';
 
 
-const PostReview = () => {
+
+
+  const PostReview = () => {
   const [dealer, setDealer] = useState({});
   const [review, setReview] = useState("");
   const [model, setModel] = useState();
   const [year, setYear] = useState("");
   const [date, setDate] = useState("");
   const [carmodels, setCarmodels] = useState([]);
+
 
   let curr_url = window.location.href;
   let root_url = curr_url.substring(0,curr_url.indexOf("postreview"));
@@ -21,7 +24,7 @@ const PostReview = () => {
   let review_url = root_url+`djangoapp/add_review`;
   let carmodels_url = root_url+`djangoapp/get_cars`;
 
-  const postreview = async ()=>{
+    const postreview = async ()=>{
     let name = sessionStorage.getItem("firstname")+" "+sessionStorage.getItem("lastname");
     //If the first and second name are stores as null, use the username
     if(name.includes("null")) {
@@ -31,7 +34,7 @@ const PostReview = () => {
       alert("All details are mandatory")
       return;
     }
-
+  
     let model_split = model.split(" ");
     let make_chosen = model_split[0];
     let model_chosen = model_split[1];
